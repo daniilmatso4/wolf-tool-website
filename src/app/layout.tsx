@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: 'Wolf Tool - AI Sales Prospecting That Closes Deals',
     description:
       'Unleash AI-powered sales agents to find, engage, and close prospects on LinkedIn.',
-    url: 'https://wolfpack.ai',
+    url: 'https://wolfengine.co',
     siteName: 'Wolf Tool',
     type: 'website',
   },

@@ -15,7 +15,7 @@ const footerLinks = {
   ],
   Support: [
     { label: 'Discord', href: 'https://discord.gg/bFYDEgUBfe' },
-    { label: 'Email Support', href: 'mailto:support@wolfpack.ai' },
+    { label: 'Email Support', href: 'mailto:support@wolfengine.co' },
     { label: 'Documentation', href: '/docs' },
   ],
 };
