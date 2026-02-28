@@ -5,7 +5,7 @@ const VERSION = '1.0.0';
 
 const DOWNLOAD_URLS = {
   windows: `https://github.com/${GITHUB_REPO}/releases/download/v${VERSION}/Wolf.Tool.Setup.${VERSION}.exe`,
-  mac: `https://github.com/${GITHUB_REPO}/releases/download/v${VERSION}/Wolf.Tool-${VERSION}.dmg`,
+  mac: `https://github.com/${GITHUB_REPO}/releases/download/v${VERSION}/Wolf.Tool-${VERSION}-arm64.dmg`,
 };
 
 export async function GET(request: Request) {
