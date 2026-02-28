@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
 
 const GITHUB_REPO = 'daniilmatso4/wolf-tool';
-const VERSION = '1.0.0';
+const VERSION = '1.0.1';
 
 const DOWNLOAD_URLS = {
   windows: `https://github.com/${GITHUB_REPO}/releases/download/v${VERSION}/Wolf.Tool.Setup.${VERSION}.exe`,
-  mac: `https://github.com/${GITHUB_REPO}/releases/download/v${VERSION}/Wolf.Tool-${VERSION}-arm64.dmg`,
+  mac: `https://github.com/${GITHUB_REPO}/releases/download/v${VERSION}/Wolf.Tool-${VERSION}-universal.dmg`,
 };
 
 export async function GET(request: Request) {
