@@ -1,14 +1,23 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { MessageSquare, Users, Bell, ExternalLink, Sparkles, Bug, Lightbulb } from 'lucide-react';
 
-const changelogEntries = [
+interface ChangelogEntry {
+  version: string;
+  date: string;
+  title: string;
+  type: 'release' | 'beta';
+  changes: string[];
+}
+
+const fallbackEntries: ChangelogEntry[] = [
   {
     version: '1.0.0',
     date: '2026-02-15',
     title: 'Initial Release',
-    type: 'release' as const,
+    type: 'release',
     changes: [
       'Launch of Wolf Tool desktop application',
       '3 AI agents: Jordan, Donnie, and Naomi',
@@ -22,7 +31,7 @@ const changelogEntries = [
     version: '0.9.0',
     date: '2026-01-28',
     title: 'Beta Release',
-    type: 'beta' as const,
+    type: 'beta',
     changes: [
       'Beta testing with early access users',
       'Performance improvements to AI agent processing',
@@ -60,6 +69,19 @@ const communityChannels = [
 ];
 
 export default function CommunityPage() {
+  const [changelogEntries, setChangelogEntries] = useState<ChangelogEntry[]>(fallbackEntries);
+
+  useEffect(() => {
+    fetch('/api/releases')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.entries && data.entries.length > 0) {
+          setChangelogEntries(data.entries);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <div className="min-h-screen py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { LogIn, Mail, Lock, AlertCircle, Loader2 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
+import WolfLogo from '@/components/icons/WolfLogo';
 
 function SignInForm() {
   const [email, setEmail] = useState('');
@@ -56,7 +57,7 @@ function SignInForm() {
       >
         <div className="card p-8 border-navy-700/50">
           <div className="text-center mb-8">
-            <span className="text-4xl mb-4 block">🐺</span>
+            <WolfLogo size={48} className="text-gold mx-auto mb-4" />
             <h1 className="text-2xl font-bold text-white mb-2">Welcome Back</h1>
             <p className="text-gray-400 text-sm">Sign in to your Wolf Tool account</p>
           </div>

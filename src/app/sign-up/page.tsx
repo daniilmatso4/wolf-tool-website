@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { UserPlus, Mail, Lock, User, AlertCircle, CheckCircle } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
+import WolfLogo from '@/components/icons/WolfLogo';
 
 export default function SignUpPage() {
   const [fullName, setFullName] = useState('');
@@ -88,7 +89,7 @@ export default function SignUpPage() {
       >
         <div className="card p-8 border-navy-700/50">
           <div className="text-center mb-8">
-            <span className="text-4xl mb-4 block">🐺</span>
+            <WolfLogo size={48} className="text-gold mx-auto mb-4" />
             <h1 className="text-2xl font-bold text-white mb-2">Join the Pack</h1>
             <p className="text-gray-400 text-sm">Create your Wolf Tool account and start closing</p>
           </div>

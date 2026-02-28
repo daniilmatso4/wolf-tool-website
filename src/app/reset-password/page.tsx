@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Lock, AlertCircle, CheckCircle } from 'lucide-react';
+import { Lock, AlertCircle, CheckCircle, ShieldCheck } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
 export default function ResetPasswordPage() {
@@ -73,7 +73,7 @@ export default function ResetPasswordPage() {
       >
         <div className="card p-8 border-navy-700/50">
           <div className="text-center mb-8">
-            <span className="text-4xl mb-4 block">🔐</span>
+            <ShieldCheck className="w-12 h-12 text-gold mx-auto mb-4" />
             <h1 className="text-2xl font-bold text-white mb-2">Set New Password</h1>
             <p className="text-gray-400 text-sm">Choose a strong password for your account</p>
           </div>

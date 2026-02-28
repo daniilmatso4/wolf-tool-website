@@ -2,7 +2,28 @@
 
 import { motion } from 'framer-motion';
 import { LEVELS, ACHIEVEMENTS } from '@/lib/constants';
-import { Trophy, Star, Flame, TrendingUp } from 'lucide-react';
+import { Trophy, Star, Flame, TrendingUp, Phone, PhoneCall, Mail, Send, Inbox, DollarSign, Banknote, CircleDollarSign, Zap, Dumbbell, Handshake, Globe, Search, Target, Gem } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+
+const iconMap: Record<string, LucideIcon> = {
+  PhoneCall,
+  Phone,
+  Flame,
+  Trophy,
+  Mail,
+  Send,
+  Inbox,
+  DollarSign,
+  Banknote,
+  CircleDollarSign,
+  Zap,
+  Dumbbell,
+  Handshake,
+  Globe,
+  Search,
+  Target,
+  Gem,
+};
 
 export default function GamificationSection() {
   return (
@@ -88,25 +109,28 @@ export default function GamificationSection() {
             </div>
 
             <div className="grid grid-cols-4 sm:grid-cols-5 gap-3">
-              {ACHIEVEMENTS.map((achievement, index) => (
-                <motion.div
-                  key={achievement.id}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.03 }}
-                  className="group relative"
-                >
-                  <div className="w-full aspect-square rounded-xl bg-navy-900 border border-navy-700/50 flex items-center justify-center text-2xl hover:border-gold/30 hover:bg-gold/5 transition-all cursor-default">
-                    {achievement.icon}
-                  </div>
-                  {/* Tooltip */}
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-navy-950 border border-navy-700 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
-                    <p className="text-xs font-semibold text-white">{achievement.name}</p>
-                    <p className="text-xs text-gray-400">{achievement.description}</p>
-                  </div>
-                </motion.div>
-              ))}
+              {ACHIEVEMENTS.map((achievement, index) => {
+                const IconComponent = iconMap[achievement.icon];
+                return (
+                  <motion.div
+                    key={achievement.id}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.03 }}
+                    className="group relative"
+                  >
+                    <div className="w-full aspect-square rounded-xl bg-navy-900 border border-navy-700/50 flex items-center justify-center hover:border-gold/30 hover:bg-gold/5 transition-all cursor-default">
+                      {IconComponent && <IconComponent className="w-6 h-6 text-gray-400 group-hover:text-gold transition-colors" />}
+                    </div>
+                    {/* Tooltip */}
+                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-navy-950 border border-navy-700 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
+                      <p className="text-xs font-semibold text-white">{achievement.name}</p>
+                      <p className="text-xs text-gray-400">{achievement.description}</p>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
 
             {/* XP rules */}
@@ -114,13 +138,13 @@ export default function GamificationSection() {
               <p className="text-sm font-medium text-gray-300 mb-3">Earn XP for every action:</p>
               <div className="grid grid-cols-2 gap-2">
                 {[
-                  { action: 'Phone Call', xp: '+10 XP', icon: '📞' },
-                  { action: 'Email Sent', xp: '+5 XP', icon: '✉️' },
-                  { action: 'Meeting', xp: '+25 XP', icon: '🤝' },
-                  { action: 'Deal Closed', xp: '+100 XP', icon: '💰' },
+                  { action: 'Phone Call', xp: '+10 XP', Icon: Phone },
+                  { action: 'Email Sent', xp: '+5 XP', Icon: Mail },
+                  { action: 'Meeting', xp: '+25 XP', Icon: Handshake },
+                  { action: 'Deal Closed', xp: '+100 XP', Icon: DollarSign },
                 ].map((rule) => (
                   <div key={rule.action} className="flex items-center gap-2 bg-navy-900/50 rounded-lg px-3 py-2">
-                    <span>{rule.icon}</span>
+                    <rule.Icon className="w-4 h-4 text-gold" />
                     <span className="text-xs text-gray-400">{rule.action}</span>
                     <span className="ml-auto text-xs font-semibold text-gold">{rule.xp}</span>
                   </div>

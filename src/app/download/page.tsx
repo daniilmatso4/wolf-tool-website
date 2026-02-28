@@ -13,43 +13,53 @@ function detectPlatform(): Platform {
   return 'windows';
 }
 
-const platformInfo = {
-  windows: {
-    label: 'Windows',
-    icon: Monitor,
-    file: 'Wolf Tool Setup 1.0.0.exe',
-    requirements: 'Windows 10/11',
-    size: '~85 MB',
-    steps: [
-      { step: 1, title: 'Download the installer', desc: 'Click the download button to get Wolf Tool Setup 1.0.0.exe' },
-      { step: 2, title: 'Run the installer', desc: 'Double-click the downloaded file. If Windows SmartScreen appears, click "More info" then "Run anyway".' },
-      { step: 3, title: 'Sign in', desc: 'Open Wolf Tool and sign in with the same email you used on this website.' },
-      { step: 4, title: 'Start prospecting', desc: 'Connect your LinkedIn account, set your target, and deploy your AI agents!' },
-    ],
-  },
-  mac: {
-    label: 'macOS',
-    icon: Apple,
-    file: 'Wolf Tool-1.0.0-universal.dmg',
-    requirements: 'macOS 11+ (Intel & Apple Silicon)',
-    size: '~180 MB',
-    steps: [
-      { step: 1, title: 'Download the DMG', desc: 'Click the download button to get the universal DMG (works on both Intel and Apple Silicon Macs).' },
-      { step: 2, title: 'Install the app', desc: 'Open the DMG and drag Wolf Tool into your Applications folder.' },
-      { step: 3, title: 'Open the app', desc: 'Right-click (or Control-click) Wolf Tool in Applications and select "Open". Click "Open" on the dialog. You only need to do this once.' },
-      { step: 4, title: 'Sign in & start', desc: 'Sign in with your account, connect LinkedIn, and deploy your AI agents!' },
-    ],
-  },
-};
+function getPlatformInfo(version: string) {
+  return {
+    windows: {
+      label: 'Windows',
+      icon: Monitor,
+      file: `Wolf Tool Setup ${version}.exe`,
+      requirements: 'Windows 10/11',
+      size: '~85 MB',
+      steps: [
+        { step: 1, title: 'Download the installer', desc: `Click the download button to get Wolf Tool Setup ${version}.exe` },
+        { step: 2, title: 'Run the installer', desc: 'Double-click the downloaded file. If Windows SmartScreen appears, click "More info" then "Run anyway".' },
+        { step: 3, title: 'Sign in', desc: 'Open Wolf Tool and sign in with the same email you used on this website.' },
+        { step: 4, title: 'Start prospecting', desc: 'Connect your LinkedIn account, set your target, and deploy your AI agents!' },
+      ],
+    },
+    mac: {
+      label: 'macOS',
+      icon: Apple,
+      file: `Wolf Tool-${version}-universal.dmg`,
+      requirements: 'macOS 11+ (Intel & Apple Silicon)',
+      size: '~180 MB',
+      steps: [
+        { step: 1, title: 'Download the DMG', desc: 'Click the download button to get the universal DMG (works on both Intel and Apple Silicon Macs).' },
+        { step: 2, title: 'Install the app', desc: 'Open the DMG and drag Wolf Tool into your Applications folder.' },
+        { step: 3, title: 'Open the app', desc: 'Right-click (or Control-click) Wolf Tool in Applications and select "Open". Click "Open" on the dialog. You only need to do this once.' },
+        { step: 4, title: 'Sign in & start', desc: 'Sign in with your account, connect LinkedIn, and deploy your AI agents!' },
+      ],
+    },
+  };
+}
 
 export default function DownloadPage() {
   const [platform, setPlatform] = useState<Platform>('windows');
   const [downloading, setDownloading] = useState(false);
+  const [version, setVersion] = useState('1.0.0');
 
   useEffect(() => {
     setPlatform(detectPlatform());
+    fetch('/api/download?platform=windows')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.version) setVersion(data.version);
+      })
+      .catch(() => {});
   }, []);
 
+  const platformInfo = getPlatformInfo(version);
   const info = platformInfo[platform];
   const otherPlatform = platform === 'windows' ? 'mac' : 'windows';
   const Icon = info.icon;
@@ -124,7 +134,7 @@ export default function DownloadPage() {
           </div>
           <h2 className="text-2xl font-bold text-white mb-2">Wolf Tool for {info.label}</h2>
           <p className="text-gray-400 text-sm mb-6">
-            Version 1.0.0 &bull; {info.requirements} &bull; {info.size} &bull; Free
+            Version {version} &bull; {info.requirements} &bull; {info.size} &bull; Free
           </p>
 
           <button

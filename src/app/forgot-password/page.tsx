@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Mail, AlertCircle, CheckCircle, ArrowLeft } from 'lucide-react';
+import { Mail, AlertCircle, CheckCircle, ArrowLeft, KeyRound } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
 export default function ForgotPasswordPage() {
@@ -65,7 +65,7 @@ export default function ForgotPasswordPage() {
       >
         <div className="card p-8 border-navy-700/50">
           <div className="text-center mb-8">
-            <span className="text-4xl mb-4 block">🔑</span>
+            <KeyRound className="w-12 h-12 text-gold mx-auto mb-4" />
             <h1 className="text-2xl font-bold text-white mb-2">Reset Password</h1>
             <p className="text-gray-400 text-sm">
               Enter your email and we&apos;ll send you a reset link

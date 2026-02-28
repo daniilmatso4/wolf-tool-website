@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, LogIn, User } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { NAV_LINKS } from '@/lib/constants';
+import WolfLogo from '@/components/icons/WolfLogo';
 import type { User as SupabaseUser } from '@supabase/supabase-js';
 
 export default function Navbar() {
@@ -32,7 +33,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <span className="text-2xl">🐺</span>
+            <WolfLogo size={28} className="text-gold group-hover:drop-shadow-[0_0_6px_rgba(212,175,55,0.5)] transition-all" />
             <span className="text-xl font-bold gold-gradient">Wolf Tool</span>
           </Link>
 

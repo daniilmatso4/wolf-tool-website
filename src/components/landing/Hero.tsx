@@ -2,7 +2,16 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Play, Zap } from 'lucide-react';
+import { ArrowRight, Play, Zap, Target, Mail, DollarSign, Flame, Gem } from 'lucide-react';
+import WolfLogo from '@/components/icons/WolfLogo';
+
+const socialProofIcons = [
+  { Icon: WolfLogo, color: 'text-gold' },
+  { Icon: Flame, color: 'text-orange-400' },
+  { Icon: Gem, color: 'text-purple-400' },
+  { Icon: Zap, color: 'text-yellow-400' },
+  { Icon: Target, color: 'text-blue-400' },
+];
 
 export default function Hero() {
   return (
@@ -77,17 +86,21 @@ export default function Hero() {
           className="mt-16 flex flex-col items-center gap-3"
         >
           <div className="flex -space-x-2">
-            {['🐺', '🔥', '💎', '⚡', '🏆'].map((emoji, i) => (
+            {socialProofIcons.map(({ Icon, color }, i) => (
               <div
                 key={i}
-                className="w-10 h-10 rounded-full bg-navy-800 border-2 border-navy-700 flex items-center justify-center text-lg"
+                className="w-10 h-10 rounded-full bg-navy-800 border-2 border-navy-700 flex items-center justify-center"
               >
-                {emoji}
+                {Icon === WolfLogo ? (
+                  <Icon size={20} className={color} />
+                ) : (
+                  <Icon className={`w-5 h-5 ${color}`} />
+                )}
               </div>
             ))}
           </div>
           <p className="text-gray-500 text-sm">
-            Join <span className="text-gold font-semibold">500+</span> closers already using Wolf Tool
+            Free to download &mdash; start closing today
           </p>
         </motion.div>
 
@@ -114,12 +127,14 @@ export default function Hero() {
             <div className="bg-navy-900 p-6 sm:p-8">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                 {[
-                  { label: 'Leads Found', value: '1,247', change: '+24%', icon: '🎯' },
-                  { label: 'Messages Sent', value: '856', change: '+18%', icon: '✉️' },
-                  { label: 'Deals Closed', value: '47', change: '+32%', icon: '💰' },
+                  { label: 'Leads Found', value: '1,247', change: '+24%', Icon: Target, color: 'text-blue-400' },
+                  { label: 'Messages Sent', value: '856', change: '+18%', Icon: Mail, color: 'text-green-400' },
+                  { label: 'Deals Closed', value: '47', change: '+32%', Icon: DollarSign, color: 'text-gold' },
                 ].map((stat) => (
                   <div key={stat.label} className="card flex items-center gap-3">
-                    <span className="text-2xl">{stat.icon}</span>
+                    <div className="w-10 h-10 rounded-lg bg-navy-800 flex items-center justify-center">
+                      <stat.Icon className={`w-5 h-5 ${stat.color}`} />
+                    </div>
                     <div>
                       <p className="text-2xl font-bold text-white">{stat.value}</p>
                       <p className="text-xs text-gray-400">{stat.label}</p>
@@ -131,12 +146,16 @@ export default function Hero() {
               {/* Agent status row */}
               <div className="flex flex-wrap gap-3">
                 {[
-                  { name: 'Jordan', emoji: '🐺', status: 'Prospecting...', color: 'border-gold/40' },
-                  { name: 'Donnie', emoji: '🔥', status: 'Following up...', color: 'border-blue-400/40' },
-                  { name: 'Naomi', emoji: '💎', status: 'Analyzing brand...', color: 'border-purple-400/40' },
+                  { name: 'Jordan', Icon: WolfLogo, status: 'Prospecting...', color: 'border-gold/40', iconColor: 'text-gold' },
+                  { name: 'Donnie', Icon: Flame, status: 'Following up...', color: 'border-blue-400/40', iconColor: 'text-blue-400' },
+                  { name: 'Naomi', Icon: Gem, status: 'Analyzing brand...', color: 'border-purple-400/40', iconColor: 'text-purple-400' },
                 ].map((agent) => (
                   <div key={agent.name} className={`card flex items-center gap-2 flex-1 min-w-[200px] border ${agent.color}`}>
-                    <span className="text-xl">{agent.emoji}</span>
+                    {agent.Icon === WolfLogo ? (
+                      <agent.Icon size={20} className={agent.iconColor} />
+                    ) : (
+                      <agent.Icon className={`w-5 h-5 ${agent.iconColor}`} />
+                    )}
                     <div>
                       <p className="text-sm font-semibold text-white">{agent.name}</p>
                       <p className="text-xs text-gray-400">{agent.status}</p>

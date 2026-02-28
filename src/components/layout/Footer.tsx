@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import WolfLogo from '@/components/icons/WolfLogo';
 
 const footerLinks = {
   Product: [
@@ -28,7 +29,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
-              <span className="text-2xl">🐺</span>
+              <WolfLogo size={28} className="text-gold" />
               <span className="text-xl font-bold gold-gradient">Wolf Tool</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
