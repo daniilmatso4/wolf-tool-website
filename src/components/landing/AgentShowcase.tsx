@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { AGENTS } from '@/lib/constants';
-import { Bot, MessageSquare, Target, Brain } from 'lucide-react';
+import { Bot, MessageSquare, Target, Brain, Flame, Gem } from 'lucide-react';
+import WolfLogo from '@/components/icons/WolfLogo';
 
 const agentCapabilities = {
   jordan: [
@@ -56,8 +57,10 @@ export default function AgentShowcase() {
             >
               {/* Avatar & name */}
               <div className="flex items-center gap-4 mb-4">
-                <div className={`w-14 h-14 rounded-xl ${agent.bgColor} flex items-center justify-center text-3xl`}>
-                  {agent.avatar}
+                <div className={`w-14 h-14 rounded-xl ${agent.bgColor} flex items-center justify-center`}>
+                  {agent.avatar === 'WolfLogo' && <WolfLogo size={32} />}
+                  {agent.avatar === 'Flame' && <Flame className={`w-8 h-8 ${agent.color}`} />}
+                  {agent.avatar === 'Gem' && <Gem className={`w-8 h-8 ${agent.color}`} />}
                 </div>
                 <div>
                   <h3 className={`text-xl font-bold ${agent.color}`}>{agent.name}</h3>
