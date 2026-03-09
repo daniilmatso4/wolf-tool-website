@@ -110,6 +110,7 @@ export const PRICING_TIERS = [
 // Navigation links
 export const NAV_LINKS = [
   { label: 'Features', href: '/#features' },
+  { label: 'Guide', href: '/guide' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Community', href: '/community' },
 ] as const;
