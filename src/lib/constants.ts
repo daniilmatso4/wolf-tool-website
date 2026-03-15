@@ -123,3 +123,161 @@ export const PIPELINE_STAGES = [
   { name: 'Meeting Set', color: 'bg-purple-500', count: 7 },
   { name: 'Closed Won', color: 'bg-green-500', count: 5 },
 ] as const;
+
+// Competitor comparison data
+export type ComparisonFeature = {
+  feature: string;
+  wolf: string | boolean;
+  competitor: string | boolean;
+};
+
+export type Competitor = {
+  slug: string;
+  name: string;
+  tagline: string;
+  description: string;
+  price: string;
+  wolfPrice: string;
+  features: ComparisonFeature[];
+  wolfAdvantages: string[];
+  competitorWeaknesses: string[];
+};
+
+export const COMPETITORS: Record<string, Competitor> = {
+  apollo: {
+    slug: 'apollo',
+    name: 'Apollo.io',
+    tagline: 'Why sales teams are switching from Apollo.io to Wolf Tool',
+    description: 'Apollo.io is a popular sales intelligence platform with a massive B2B database. But it lacks AI agents, gamification, and charges premium prices for features Wolf Tool includes free.',
+    price: 'From $49/mo',
+    wolfPrice: 'Free core / $50/mo Premium',
+    features: [
+      { feature: 'AI Sales Agents', wolf: true, competitor: false },
+      { feature: 'LinkedIn Prospecting', wolf: true, competitor: true },
+      { feature: 'Gamified Sales Pipeline', wolf: true, competitor: false },
+      { feature: 'Free Core App', wolf: true, competitor: 'Limited free tier' },
+      { feature: 'Human-in-the-Loop Approval', wolf: true, competitor: false },
+      { feature: 'Achievement System & XP', wolf: true, competitor: false },
+      { feature: 'Team Leaderboards', wolf: true, competitor: false },
+      { feature: 'B2B Contact Database', wolf: 'Via LinkedIn', competitor: '275M+ contacts' },
+      { feature: 'Email Sequences', wolf: 'AI-crafted', competitor: true },
+      { feature: 'Desktop App', wolf: true, competitor: false },
+      { feature: 'Brand Analysis AI', wolf: true, competitor: false },
+      { feature: 'CRM Integrations', wolf: 'Coming soon', competitor: true },
+    ],
+    wolfAdvantages: [
+      'AI agents that autonomously prospect and craft personalized messages',
+      'Gamified experience that keeps your team motivated and accountable',
+      'Free core app with full pipeline management — no paywall on essentials',
+      'Human-in-the-loop: every outreach requires your approval before sending',
+    ],
+    competitorWeaknesses: [
+      'No AI agents — requires manual prospecting and message writing',
+      'Expensive plans with feature gating across tiers',
+      'No gamification or engagement mechanics for sales teams',
+      'Steep learning curve with complex interface',
+    ],
+  },
+  lemlist: {
+    slug: 'lemlist',
+    name: 'Lemlist',
+    tagline: 'Why closers choose Wolf Tool over Lemlist',
+    description: 'Lemlist focuses on cold email outreach with personalization. While it excels at email campaigns, it lacks AI-powered prospecting agents, gamification, and the full pipeline management Wolf Tool offers for free.',
+    price: 'From $39/mo',
+    wolfPrice: 'Free core / $50/mo Premium',
+    features: [
+      { feature: 'AI Sales Agents', wolf: true, competitor: false },
+      { feature: 'LinkedIn Prospecting', wolf: true, competitor: 'Add-on' },
+      { feature: 'Gamified Sales Pipeline', wolf: true, competitor: false },
+      { feature: 'Free Core App', wolf: true, competitor: false },
+      { feature: 'Human-in-the-Loop Approval', wolf: true, competitor: false },
+      { feature: 'Cold Email Sequences', wolf: 'AI-crafted', competitor: true },
+      { feature: 'Email Warm-up', wolf: 'Not needed', competitor: true },
+      { feature: 'Achievement System & XP', wolf: true, competitor: false },
+      { feature: 'Multi-channel Outreach', wolf: 'LinkedIn + Email', competitor: 'Email + LinkedIn' },
+      { feature: 'Desktop App', wolf: true, competitor: false },
+      { feature: 'Brand Analysis AI', wolf: true, competitor: false },
+      { feature: 'Image Personalization', wolf: false, competitor: true },
+    ],
+    wolfAdvantages: [
+      'Three AI agents working simultaneously to fill your pipeline',
+      'Free core app — Lemlist has no free tier at all',
+      'Built-in gamification keeps your team engaged and competitive',
+      'Desktop app with native performance — not just another browser tab',
+    ],
+    competitorWeaknesses: [
+      'No free tier — starts at $39/month minimum',
+      'Focused only on email — limited LinkedIn integration without add-ons',
+      'No AI agents or autonomous prospecting capability',
+      'No gamification or team engagement features',
+    ],
+  },
+  instantly: {
+    slug: 'instantly',
+    name: 'Instantly.ai',
+    tagline: 'Wolf Tool vs Instantly — the smarter way to prospect',
+    description: 'Instantly.ai is built for high-volume cold email at scale. While it can send thousands of emails, it lacks intelligent AI agents, gamification, and the LinkedIn-first approach that Wolf Tool brings to modern sales.',
+    price: 'From $30/mo',
+    wolfPrice: 'Free core / $50/mo Premium',
+    features: [
+      { feature: 'AI Sales Agents', wolf: true, competitor: false },
+      { feature: 'LinkedIn Prospecting', wolf: true, competitor: false },
+      { feature: 'Gamified Sales Pipeline', wolf: true, competitor: false },
+      { feature: 'Free Core App', wolf: true, competitor: false },
+      { feature: 'Human-in-the-Loop Approval', wolf: true, competitor: false },
+      { feature: 'Unlimited Email Accounts', wolf: false, competitor: true },
+      { feature: 'Email Warm-up', wolf: 'Not needed', competitor: true },
+      { feature: 'Achievement System & XP', wolf: true, competitor: false },
+      { feature: 'B2B Lead Database', wolf: 'Via LinkedIn', competitor: '160M+ contacts' },
+      { feature: 'Desktop App', wolf: true, competitor: false },
+      { feature: 'Brand Analysis AI', wolf: true, competitor: false },
+      { feature: 'High-volume Email', wolf: false, competitor: true },
+    ],
+    wolfAdvantages: [
+      'AI agents that think, not just send — personalized outreach at every step',
+      'LinkedIn-first prospecting finds decision-makers where they live',
+      'Gamification transforms cold outreach from a grind into a game',
+      'Free core app means you can start closing without spending a dime',
+    ],
+    competitorWeaknesses: [
+      'Email-only — no LinkedIn prospecting or social selling',
+      'No AI agents — you still write the messages yourself',
+      'No gamification — just a dashboard with metrics',
+      'No free tier — every feature is behind a paywall',
+    ],
+  },
+  'linkedin-sales-navigator': {
+    slug: 'linkedin-sales-navigator',
+    name: 'LinkedIn Sales Navigator',
+    tagline: 'Everything Sales Navigator does — plus AI agents, for less',
+    description: 'LinkedIn Sales Navigator is the gold standard for LinkedIn prospecting. But at $99/month with no AI agents, no pipeline gamification, and no automated outreach, Wolf Tool delivers more value at a fraction of the cost.',
+    price: 'From $99/mo',
+    wolfPrice: 'Free core / $50/mo Premium',
+    features: [
+      { feature: 'AI Sales Agents', wolf: true, competitor: false },
+      { feature: 'LinkedIn Prospecting', wolf: true, competitor: true },
+      { feature: 'Gamified Sales Pipeline', wolf: true, competitor: false },
+      { feature: 'Free Core App', wolf: true, competitor: false },
+      { feature: 'Human-in-the-Loop Approval', wolf: true, competitor: false },
+      { feature: 'Advanced LinkedIn Filters', wolf: 'Via AI agents', competitor: true },
+      { feature: 'InMail Credits', wolf: false, competitor: '50/mo' },
+      { feature: 'Achievement System & XP', wolf: true, competitor: false },
+      { feature: 'CRM Sync', wolf: 'Coming soon', competitor: true },
+      { feature: 'Desktop App', wolf: true, competitor: false },
+      { feature: 'Automated Outreach', wolf: true, competitor: false },
+      { feature: 'Brand Analysis AI', wolf: true, competitor: false },
+    ],
+    wolfAdvantages: [
+      'AI agents automate what Sales Navigator makes you do manually',
+      'Half the price of Sales Navigator with AI-powered automation included',
+      'Gamification keeps your sales team motivated — Sales Nav is just a search tool',
+      'Built-in pipeline management — no separate CRM needed',
+    ],
+    competitorWeaknesses: [
+      'Extremely expensive at $99+/month per seat',
+      'No automation — you still do all prospecting and messaging manually',
+      'No pipeline management — requires a separate CRM',
+      'No gamification or team engagement features',
+    ],
+  },
+} as const;

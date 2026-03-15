@@ -6,18 +6,19 @@ const footerLinks = {
     { label: 'Features', href: '/#features' },
     { label: 'Pricing', href: '/pricing' },
     { label: 'Download', href: '/download' },
-    { label: 'Changelog', href: '/community' },
+    { label: 'Setup Guide', href: '/guide' },
+  ],
+  Compare: [
+    { label: 'vs Apollo.io', href: '/vs/apollo' },
+    { label: 'vs Lemlist', href: '/vs/lemlist' },
+    { label: 'vs Instantly.ai', href: '/vs/instantly' },
+    { label: 'vs Sales Navigator', href: '/vs/linkedin-sales-navigator' },
   ],
   Company: [
-    { label: 'About', href: '/#about' },
     { label: 'Community', href: '/community' },
+    { label: 'Discord', href: 'https://discord.gg/bFYDEgUBfe' },
     { label: 'Terms of Service', href: '/terms' },
     { label: 'Privacy Policy', href: '/privacy' },
-  ],
-  Support: [
-    { label: 'Discord', href: 'https://discord.gg/bFYDEgUBfe' },
-    { label: 'Email Support', href: 'mailto:support@wolfengine.co' },
-    { label: 'Documentation', href: '/docs' },
   ],
 };
 
@@ -28,7 +29,7 @@ export default function Footer() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-60 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2.5">
